@@ -8,3 +8,9 @@ History:
 www.mayitzin.com
 """
 
+fileName = "chordist.m"
+
+with open(fileName, 'r') as inputFile:
+    text = inputFile.readlines()
+
+print text
