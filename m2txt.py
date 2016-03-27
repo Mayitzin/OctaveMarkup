@@ -22,8 +22,9 @@ for line in range(len(text)):
         inBlock = True
         print line,":\t",text[line].strip()[1:]
     else:
-        if inBlock: index.append(line)
-        indices.append(index)
+        if inBlock:
+            index.append(line-1)
+            indices.append(index)
         inBlock = False
 
-# print indices
+print indices
