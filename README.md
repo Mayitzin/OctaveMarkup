@@ -13,7 +13,60 @@ In the same sense, the **Octave Markup** could:
 - Have both interactions directly through the Command Line or with an interactive fashion within Octave's GUI.
 - Be able to generate further outputs like XHTML, ePub, RTF, Man pages, Qt Help, ODF, etc.
 
-This project is from now under constant development.
+## Notes on Markup Style
+
+- Two types of script are to be differentiated, which have their own :
+    + Scripts. They are the sets of intructions to be given to the MATLAB interpreter.
+    + Functions. These files are the independent files that are callable to perform individual sets of operations.
+- Scripts and functions have separated workspaces and their variable names hould not be confused or cross-referenced.
+- Functions are declared with the keyowrd `function` before the name, and their corresponding M-files have the same name.
+- Functions start a commented area at the very beginning of the file, which is used to describe it. This area becomes automatically the help text, and should be displayed when the instruction `help` is typed before the name of the function in the command window.
+- Scripts can have any name and do not start with `function`. In case they begin with a commented block, it should be treated as a **Section Title**, preceded with two percent symbols (%%) on the first line, and a single symbol for the following lines.
+
+Example of a file named `myfunction.m`:
+
+```matlab
+function c = myfunction(a,b)
+%MYFUNCTION describes my function.
+%   c = myfunction(a,b) returns the result 'c' of the operations between
+%   the inputs 'a' and 'b'.
+%
+%   It can be used to describe inputs and outputs; and this is displayed when
+%   the user types the keyword 'help' before the function name, i.e.:
+%   >  help myfunction
+%
+%   See also myFunction1, myFunction2
+```
+
+Example of a file named `myscript.m`:
+
+```matlab
+%% Example of a Script.
+% This is a small example of how a script is created. It does not have the same
+% heading as the function and its style is slightly different. The double
+% percent symbol indicates the beginning of a section.
+% Markup works only within section breaks like this.
+%
+% @author: Mario Garcia.
+% @date: 27.03.2016.
+
+%% Definition of variables and call of the function
+input1 = 1;
+input2 = 2;
+result = myfunction(input1, input2);
+
+%% LaTeX Markup Example cabe added too
+% <latex>
+% \begin{tabular}{|r|r|}
+% \hline $n$&$n!$\\ 
+% \hline 1&1\\ 2&2\\ 3&6\\ 
+% \hline
+% \end{tabular}
+% </latex>
+%
+```
+
+_This project is from now under constant development._
 
 References
 ----------
