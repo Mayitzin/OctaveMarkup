@@ -14,4 +14,6 @@ with open(fileName, 'r') as inputFile:
     text = inputFile.readlines()
 
 for line in text:
-    print line.strip()
+    if line.startswith("%"):
+    	print line.strip()
+
