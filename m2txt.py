@@ -13,4 +13,5 @@ fileName = "chordist.m"
 with open(fileName, 'r') as inputFile:
     text = inputFile.readlines()
 
-print text
+for line in text:
+    print line.strip()
