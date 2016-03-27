@@ -9,20 +9,21 @@ www.mayitzin.com
 """
 
 fileName = "chordist.m"
-block = False
+inBlock = False
 indices = []
 
 with open(fileName, 'r') as inputFile:
     text = inputFile.readlines()
 
+index =[]
 for line in range(len(text)):
     if text[line].startswith("%"):
-        # if block is False: index.append(text.index(line))
-        block = True
-        print line,":\t",text[line].strip()
+        if not inBlock: index = [line]
+        inBlock = True
+        print line,":\t",text[line].strip()[1:]
     else:
-        # if block is True: index.append(text.index(line))
-        block = False
-    # indices.append(index)
+        if inBlock: index.append(line)
+        indices.append(index)
+        inBlock = False
 
 # print indices
