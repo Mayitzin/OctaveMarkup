@@ -15,15 +15,14 @@ indices = []
 with open(fileName, 'r') as inputFile:
     text = inputFile.readlines()
 
-for line in text:
-    index = []
-    if line.startswith("%"):
-        if block is False: index.append(text.index(line))
+for line in range(len(text)):
+    if text[line].startswith("%"):
+        # if block is False: index.append(text.index(line))
         block = True
-        print text.index(line),":\t",line.strip()
+        print line,":\t",text[line].strip()
     else:
-        if block is True: index.append(text.index(line))
+        # if block is True: index.append(text.index(line))
         block = False
-    indices.append(index)
+    # indices.append(index)
 
 # print indices
