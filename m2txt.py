@@ -8,9 +8,19 @@ History:
 www.mayitzin.com
 """
 
+import sys
+
 fileName = "chordist.m"
 inBlock = False
 indices = []
+
+
+# Read extra parameters
+if len(sys.argv) >= 2:
+    fileName = sys.argv[1]
+
+# Create Output File
+output = fileName[:-2]+".html"
 
 with open(fileName, 'r') as inputFile:
     text = inputFile.readlines()
@@ -28,3 +38,4 @@ for line in range(len(text)):
         inBlock = False
 
 print indices
+print output
