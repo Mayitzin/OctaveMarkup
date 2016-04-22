@@ -35,7 +35,10 @@ for line in range(len(text)):
         if inBlock:
             index.append(line-1)
             indices.append(index)
+            print ""
         inBlock = False
 
-print indices
-print output
+print "Indices"
+for ind in indices:
+    if ind[0]==ind[1]: print ind[0], ": is one-liner"
+    else: print ind, ": is a Block"
