@@ -14,7 +14,7 @@
 int main(int argc, char *argv[]){
     if (argc<2){
         printf("ERROR: Not enough input arguments\n");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     FILE *inFile;
