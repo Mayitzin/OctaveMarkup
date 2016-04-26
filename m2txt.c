@@ -39,20 +39,25 @@ int main(int argc, char *argv[]){
     }
 
     // Print contents of the file
-    int line = 0;
+    int line = 0, start = -1, end;
     int inBlock = 0;
     while( fgets(str, LINE_LENGTH, inFile) != NULL ) {
         if (str[0]=='%') {
+            if (start<0) {
+                start = line;
+            }
             printf("%d\t%s", line, str);
             ++inBlock;
         } else {
             if (inBlock==1) {
-                printf("ONE-LINER\n");
+                printf("[%2d] : ONE-LINER\n\n", start);
             }
             else if (inBlock>1) {
-                printf("BLOCK\n");
+                end = line-1;
+                printf("[%2d,%2d] : BLOCK\n\n", start, end);
             }
             inBlock = 0;
+            start = -1;
         }
         ++line;
     }
