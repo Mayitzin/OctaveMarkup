@@ -8,9 +8,20 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>         // strlen, strcat, strcpy, strcmp, strtok, atof
 
 int main(int argc, char *argv[]){
-	printf("This is a simple M-file reader\n");
+    if (argc<2){
+        printf("ERROR: Not enough input arguments\n");
+        exit(1);
+    }
 
-	return (0);
+    FILE *inFile;
+    char inputFile[50];
+    strcpy(inputFile, argv[1]);
+
+    printf("Input File: %s\n", inputFile);
+
+    return (0);
 }
