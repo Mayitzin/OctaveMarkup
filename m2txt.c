@@ -12,7 +12,7 @@
 #include <string.h>         // strlen, strcat, strcpy, strcmp, strtok, atof
 #include <errno.h>
 
-#define LINE_LENGTH 100
+#define LINE_LENGTH 100     // Number of characters per line
 
 char *defaultFile = "chordist.m";
 
@@ -40,9 +40,19 @@ int main(int argc, char *argv[]){
 
     // Print contents of the file
     int line = 0;
+    int inBlock = 0;
     while( fgets(str, LINE_LENGTH, inFile) != NULL ) {
         if (str[0]=='%') {
             printf("%d\t%s", line, str);
+            ++inBlock;
+        } else {
+            if (inBlock==1) {
+                printf("ONE-LINER\n");
+            }
+            else if (inBlock>1) {
+                printf("BLOCK\n");
+            }
+            inBlock = 0;
         }
         ++line;
     }
