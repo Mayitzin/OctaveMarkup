@@ -12,23 +12,37 @@
 #include <string.h>         // strlen, strcat, strcpy, strcmp, strtok, atof
 #include <errno.h>
 
+#define LINE_LENGTH 100
+
+char *defaultFile = "chordist.m";
+
 int main(int argc, char *argv[]){
-    if (argc<2){
-        printf("ERROR: Not enough input arguments\n");
-        exit(EXIT_FAILURE);
+    // File declaration
+    FILE *inFile;
+    char inputFile[50];         // For File Name
+    char str[LINE_LENGTH];      // For string of a single line
+
+    // Handling of input arguments
+    if (argc>1) {
+        strcpy(inputFile, argv[1]);
+    } else {
+        printf("WARNING: Not enough input arguments\n");
+        strcpy(inputFile, defaultFile);
+        printf("Using default File: %s\n", inputFile);
     }
 
-    FILE *inFile;
-    char inputFile[50];
-    strcpy(inputFile, argv[1]);
-
-	int errnum;
+    // Read the file
     inFile  = fopen(inputFile, "r");
     if(inFile==NULL){
-    	errnum = errno;
-        fprintf(stderr, "%s\n", strerror(errnum));
+        fprintf(stderr, "%s\n", strerror(errno));
         exit(EXIT_FAILURE);
     }
+
+    while( fgets(str, LINE_LENGTH, inFile) != NULL ) {
+        printf("%s", str);
+    }
+
+    // Close File
     fclose(inFile);
 
     return (0);
