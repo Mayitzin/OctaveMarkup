@@ -82,3 +82,4 @@ References
 9. [Alternative parsers](https://www.mediawiki.org/wiki/Alternative_parsers). Compilation of links, descriptions, and status reports of the various alternative parsers, which are able or intended to translate MediaWiki's text markup syntax into something else.
 10. [Abstract Syntax Tree](https://en.wikipedia.org/wiki/Abstract_syntax_tree). Or just syntax tree, is a tree representation of the abstract syntactic structure of source code written in a programming language.
 11. [A Parsing Tutorial from Nathan's University](http://nathansuniversity.com/pegs.html). A hands-on course to understand and use parsing techniques for the creation of a customized programming language.
+12. [How to program a simple text parser](http://ascii-world.wikidot.com/how-to-program-a-simple-text-parser). A quick explanation of a simple text parser and how to build it, as the title says.
