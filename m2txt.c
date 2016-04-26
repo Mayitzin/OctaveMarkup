@@ -28,7 +28,7 @@ int main(int argc, char *argv[]){
     } else {
         printf("WARNING: Not enough input arguments\n");
         strcpy(inputFile, defaultFile);
-        printf("Using default File: %s\n", inputFile);
+        printf("Using default File: %s\n\n", inputFile);
     }
 
     // Read the file
@@ -38,8 +38,13 @@ int main(int argc, char *argv[]){
         exit(EXIT_FAILURE);
     }
 
+    // Print contents of the file
+    int line = 0;
     while( fgets(str, LINE_LENGTH, inFile) != NULL ) {
-        printf("%s", str);
+        if (str[0]=='%') {
+            printf("%d\t%s", line, str);
+        }
+        ++line;
     }
 
     // Close File
